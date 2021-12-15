@@ -1,13 +1,20 @@
-import { useContext } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
-import { usersContext } from "../context/usersContext";
 import Cards from "../components/Cards";
+import useFetch from "../hook/useFetch";
 
 function Home() {
-    const { usersData } = useContext(usersContext);
+    const [pageNumber, setPageNumber] = useState(1);
+    const { loading, error, list } = useFetch(pageNumber, 20);
 
-    return <Container>{usersData.list && <Cards usersData={usersData} />}</Container>;
+    console.log("home");
+
+    return (
+        <Container>
+            {list && <Cards usersData={list} setPageNumber={setPageNumber} loading={loading} error={error} />}
+        </Container>
+    );
 }
 
 export default Home;

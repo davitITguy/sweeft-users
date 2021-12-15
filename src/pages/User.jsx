@@ -3,13 +3,14 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 
+import useFetch from "../hook/useFetch";
 import Cards from "../components/Cards";
 import UserInformation from "../components/UserInformation";
 
 function User() {
     const { pathname } = useLocation();
+    const [pageNumber, setPageNumber] = useState(1);
     const [userInfo, setUserInfo] = useState();
-    const [friendsData, setFriendsData] = useState();
 
     useEffect(() => {
         axios
@@ -18,20 +19,17 @@ function User() {
                 setUserInfo(result.data);
                 // console.log(result.data);
             });
-
-        axios
-            .get(`http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com${pathname}/friends/1/20`)
-            .then((result) => {
-                setFriendsData(result.data);
-                // console.log(result.data);
-            });
     }, [pathname]);
+
+    const { loading, error, list } = useFetch(pageNumber, 20, pathname);
+
+    console.log("user");
 
     return (
         <Container>
             {userInfo && <UserInformation userInfo={userInfo} />}
             <h2 id="friends">Friends:</h2>
-            <Cards usersData={friendsData} />
+            {list && <Cards usersData={list} setPageNumber={setPageNumber} loading={loading} error={error} />}
         </Container>
     );
 }
