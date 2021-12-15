@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 import UserCard from "./UserCard";
 
-function Cards({ usersData }) {
+function Cards({ usersData, loader }) {
     return (
         <Container>
             {usersData && usersData.list.map((user) => <UserCard key={user.id} user={user} />)}
+            <div ref={loader} />
         </Container>
     );
 }

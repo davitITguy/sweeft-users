@@ -27,6 +27,8 @@ function User() {
             });
     }, [pathname]);
 
+    console.log(pathname);
+
     return (
         <Container>
             {userInfo && <UserInformation userInfo={userInfo} />}
