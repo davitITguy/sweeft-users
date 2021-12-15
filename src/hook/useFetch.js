@@ -28,7 +28,7 @@ function useFetch(page, size, userId) {
         } catch (err) {
             setError(err);
         }
-    }, [page]);
+    }, [CUSTOM_URL]);
 
     useEffect(() => {
         sendQuery();
