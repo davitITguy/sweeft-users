@@ -1,50 +1,53 @@
 import styled from "styled-components";
 
-function UserInformation() {
+function UserInformation({ userInfo }) {
+    const { imageUrl, prefix, name, lastName, title, email, ip, jobArea, jobType } = userInfo;
+    const { city, country, state, streetAddress, zipCode } = userInfo.address;
     return (
         <Container>
-            <img src="https://react.semantic-ui.com/images/avatar/large/matthew.png" alt="profile" />
+            <img src={imageUrl} alt={name} />
             <fieldset id="fieldset1">
                 <legend>Info</legend>
                 <div>
-                    <h3>Dr. Angie Olson</h3>
-                    <p>Customer Division Facilitator</p>
+                    <h3>
+                        {prefix} {name} {lastName}
+                    </h3>
+                    <p>{title}</p>
                 </div>
                 <div>
                     <p>
-                        <span>Email:</span> Adriana87@hotmail.com
+                        <span>Email:</span> {email}
                     </p>
                     <p>
-                        <span>Ip Address:</span> 205.44.63.69
+                        <span>Ip Address:</span> {ip}
                     </p>
                     <p>
-                        <span>Ip Address:</span> 205.44.63.69
+                        <span>Job Area:</span> {jobArea}
                     </p>
                     <p>
-                        <span>Job Area:</span> Metrics
-                    </p>
-                    <p>
-                        <span>Job Type:</span> Facilitator
+                        <span>Job Type:</span> {jobType}
                     </p>
                 </div>
             </fieldset>
             <fieldset id="fieldset2">
                 <legend>Address</legend>
-                <h4>Feest Inc LLC</h4>
+                <h4>
+                    {userInfo.company.name} {userInfo.company.suffix}{" "}
+                </h4>
                 <p>
-                    <span>City:</span> Lake Dewayneshire
+                    <span>City:</span> {city}
                 </p>
                 <p>
-                    <span>Country:</span> Lao People's Democratic Republic
+                    <span>Country:</span> {country}
                 </p>
                 <p>
-                    <span>State:</span> Alaska
+                    <span>State:</span> {state}
                 </p>
                 <p>
-                    <span>Street Address:</span> 218 Hilll Viaduct
+                    <span>Street Address:</span> {streetAddress}
                 </p>
                 <p>
-                    <span>ZIP:</span> 64894
+                    <span>ZIP:</span> {zipCode}
                 </p>
             </fieldset>
         </Container>

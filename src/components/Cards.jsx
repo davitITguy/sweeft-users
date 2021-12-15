@@ -1,14 +1,11 @@
 import styled from "styled-components";
+
 import UserCard from "./UserCard";
 
-const userData = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-
-function Cards() {
+function Cards({ usersData }) {
     return (
         <Container>
-            {userData.map(() => (
-                <UserCard />
-            ))}
+            {usersData && usersData.list.map((user) => <UserCard key={user.id} user={user} />)}
         </Container>
     );
 }

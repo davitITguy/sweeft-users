@@ -1,12 +1,13 @@
+import { useContext } from "react";
 import styled from "styled-components";
+
+import { usersContext } from "../context/usersContext";
 import Cards from "../components/Cards";
 
 function Home() {
-    return (
-        <Container>
-            <Cards />
-        </Container>
-    );
+    const { usersData } = useContext(usersContext);
+
+    return <Container>{usersData.list && <Cards usersData={usersData} />}</Container>;
 }
 
 export default Home;

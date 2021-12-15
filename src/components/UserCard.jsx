@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-function UserCard() {
+function UserCard({ user }) {
+    const { id, imageUrl, lastName, name, prefix, title } = user;
+
     return (
-        <Container as={Link} to="/user/id">
-            <img src="https://react.semantic-ui.com/images/avatar/large/matthew.png" alt="profile" />
+        <Container as={Link} to={`/user/${id}`}>
+            <img src={imageUrl} alt={name} />
             <div>
-                <h3>name</h3>
-                <p>profesion</p>
+                <h3>
+                    {prefix} {name} {lastName}
+                </h3>
+                <p>{title}</p>
             </div>
         </Container>
     );
