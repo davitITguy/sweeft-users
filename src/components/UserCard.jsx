@@ -16,7 +16,7 @@ function UserCard({ user }) {
 
     return (
         <Container as={Link} to={`/user/${id}`} onClick={onClick}>
-            <img src={imageUrl} alt={name} />
+            <img src={`${imageUrl}?v=${id}`} alt={name} />
             <div>
                 <h3>
                     {prefix} {name} {lastName}
