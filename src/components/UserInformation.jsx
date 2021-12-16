@@ -68,8 +68,11 @@ const Container = styled.div`
     }
 
     fieldset {
-        text-align: left;
+        /* text-align: left; */
         padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
         span {
             text-decoration: underline;
@@ -78,10 +81,7 @@ const Container = styled.div`
     #fieldset1 {
         width: 100%;
         margin: 0 10px;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-evenly;
     }
 
     @media (max-width: 800px) {

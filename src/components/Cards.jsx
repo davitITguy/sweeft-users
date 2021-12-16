@@ -20,18 +20,19 @@ function Cards({ usersData, setPageNumber, loading, error }) {
         const option = {
             root: null,
             rootMargin: "20px",
-            threshold: 0,
+            threshold: 1,
         };
         const observer = new IntersectionObserver(handleObserver, option);
         if (loader.current) observer.observe(loader.current);
     }, [handleObserver]);
 
+    console.log(loading);
     return (
         <Container>
             {usersData && usersData.map((user) => <UserCard key={user.id} user={user} />)}
             {loading && <p>Loading...</p>}
             {error && <p>Error!</p>}
-            <div ref={loader} />
+            {<div ref={loader} />}
         </Container>
     );
 }
