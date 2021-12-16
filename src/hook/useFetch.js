@@ -20,11 +20,12 @@ function useFetch(page, size, userId) {
 
     const sendQuery = useCallback(async () => {
         try {
-            await setLoading(true);
-            await setError(false);
-            const res = await axios.get(CUSTOM_URL);
-            await setList((prev) => [...prev, ...res.data.list]);
-            setLoading(false);
+            setLoading(true);
+            setError(false);
+            await axios.get(CUSTOM_URL).then((res) => {
+                setList((prev) => [...prev, ...res.data.list]);
+                setLoading(false);
+            });
         } catch (err) {
             setError(err);
         }
