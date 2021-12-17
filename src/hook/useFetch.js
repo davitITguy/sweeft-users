@@ -28,6 +28,7 @@ function useFetch(page, size, userId) {
             });
         } catch (err) {
             setError(err);
+            setLoading(false);
         }
     }, [CUSTOM_URL]);
 
