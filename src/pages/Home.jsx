@@ -8,8 +8,6 @@ function Home() {
     const [pageNumber, setPageNumber] = useState(1);
     const { loading, error, list } = useFetch(pageNumber, 20);
 
-    console.log("home");
-
     return (
         <Container>
             {list && <Cards usersData={list} setPageNumber={setPageNumber} loading={loading} error={error} />}

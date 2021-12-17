@@ -26,7 +26,6 @@ function Cards({ usersData, setPageNumber, loading, error }) {
         if (loader.current) observer.observe(loader.current);
     }, [handleObserver]);
 
-    console.log(loading);
     return (
         <Container>
             {usersData && usersData.map((user) => <UserCard key={user.id} user={user} />)}

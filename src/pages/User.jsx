@@ -15,6 +15,8 @@ function User() {
     const [pageNumber, setPageNumber] = useState(1);
     const [userInfo, setUserInfo] = useState();
 
+    const { loading, error, list } = useFetch(pageNumber, 20, pathname);
+
     useEffect(() => {
         axios
             .get(`http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com${pathname}`)
@@ -23,10 +25,6 @@ function User() {
                 // console.log(result.data);
             });
     }, [pathname]);
-
-    const { loading, error, list } = useFetch(pageNumber, 20, pathname);
-
-    console.log(usersHistory);
 
     return (
         <Container>
